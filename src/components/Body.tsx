@@ -1,5 +1,5 @@
-import Sidebar from "./Sidebar.jsx";
-import Content from "./Content.jsx";
+import Sidebar from "./Sidebar.js";
+import Content from "./Content.js";
 
 const Body = () => {
     return (

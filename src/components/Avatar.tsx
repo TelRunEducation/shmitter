@@ -1,12 +1,12 @@
 import {useDispatch, useSelector} from "react-redux";
 import {avatarSelector, nameSelector} from "../redux/store";
-import {changeAvatar, changeName} from "../redux/actionCreators";
+import {changeAvatar, changeName} from "../redux/userActionCreators.js";
 
-const Avatar = ({size}) => {
+
+const Avatar = ({size}: {size?: string}) => {
   const dispatch = useDispatch()
   const avatar = useSelector(avatarSelector)
   const userName = useSelector(nameSelector)
-  console.log(avatar)
 
   return (
     <img

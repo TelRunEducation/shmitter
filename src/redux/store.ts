@@ -1,21 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
-import userReducer from "./reducer";
+import userReducer from "./userReducer";
+import statsReducer from "./statsReducer";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
+    stats: statsReducer,
   }
 })
 
 export const avatarSelector = () => store.getState().user.avatarUrl
 export const nameSelector = () => store.getState().user.name
-
-
-// Get the type of our store variable
-export type AppStore = typeof store
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<AppStore['getState']>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
-export type AppDispatch = AppStore['dispatch']
+export const followerSelector = () => store.getState().stats.followers
+export const followingSelector = () => store.getState().stats.following
 
 export default store
