@@ -1,18 +1,19 @@
-import {Action, ActionType, UserState} from "./types";
+import {Action, UserState} from "./types";
 
-const userReducer = (state: UserState, action: ActionType) => {
+const initialState: UserState = {
+  name: 'Monster',
+  avatarUrl: 'https://gravatar.com/avatar/000?d=monsterid'
+}
+
+const userReducer = (
+  state = initialState, action) => {
   switch (action.type) {
     case Action.CHANGE_AVATAR:
-      return {...state, avatar: action.payload || state.avatarUrl};
+      return {...state, avatarUrl: action.payload || state.avatarUrl};
     case Action.CHANGE_NAME:
       return {...state, name: action.payload || state.name}
-    // case Action.CHANGE_STATS:
-    // {
-    //   let res = action.payload[statsType] + sum;
-    //   res = res < 0 ? 0 : res;
-    //   return {...stats, [statsType]: res};
-    // }
-    default: return state;
+    default:
+      return state;
   }
 }
 export default userReducer

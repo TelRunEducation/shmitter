@@ -3,9 +3,13 @@ import userReducer from "./reducer";
 
 const store = configureStore({
   reducer: {
-    userReducer: userReducer,
+    user: userReducer,
   }
 })
+
+export const avatarSelector = () => store.getState().user.avatarUrl
+export const nameSelector = () => store.getState().user.name
+
 
 // Get the type of our store variable
 export type AppStore = typeof store

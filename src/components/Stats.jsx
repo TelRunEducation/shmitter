@@ -1,15 +1,18 @@
 import Avatar from "./Avatar.jsx";
 import {useContext} from "react";
 import {TwitterContext} from "../utils/context.js";
+import {useSelector} from "react-redux";
+import {nameSelector} from "../redux/store";
 
 const Stats = () => {
-    const {user, stats, changeStats} = useContext(TwitterContext);
+    const {stats, changeStats} = useContext(TwitterContext);
+    const userName = useSelector(nameSelector)
 
     return (
         <div className={'user-stats'}>
             <div>
                 <Avatar/>
-                {user.name}
+                {userName}
             </div>
             <div className={'stats'}>
                 <div

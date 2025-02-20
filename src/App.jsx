@@ -3,8 +3,6 @@ import Navigation from "./components/Navigation.jsx";
 import Body from "./components/Body.jsx";
 import {useState} from "react";
 import {TwitterContext} from "./utils/context.js";
-import {Provider} from "react-redux";
-import store from "./redux/store.js";
 
 function App() {
   const [user, setUser] = useState({
@@ -17,14 +15,6 @@ function App() {
     following: 0
   });
 
-  const changeAvatar = url => {
-    setUser(prevState => ({...prevState, avatar: url || prevState.avatar}));
-  }
-
-  const changeName = name => {
-    setUser(prevState => ({...prevState, name: name || prevState.name}));
-  }
-
   const changeStats = (statsType, sum) => {
     setStats(stats => {
       let res = stats[statsType] + sum;
@@ -35,14 +25,12 @@ function App() {
 
   return (
     <div className={'app'}>
-      <Provider store={store}>
         <TwitterContext.Provider value={{
-          user, stats, changeAvatar, changeName, changeStats,
+          user, stats, changeStats,
         }}>
           <Navigation/>
           <Body/>
         </TwitterContext.Provider>
-      </Provider>
     </div>
   )
 }

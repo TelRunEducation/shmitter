@@ -8,8 +8,3 @@ export type UserState = {
   name: string,
   avatarUrl: string
 }
-
-export type ActionType = {
-  type: Action,
-  payload: UserState,
-}
